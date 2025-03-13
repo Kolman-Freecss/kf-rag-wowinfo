@@ -8,18 +8,21 @@ services:
       - "8000:8000"
     volumes:
       - chromadb_data:/app/chroma_db
-
-  rag_app:
-    build: .
-    depends_on:
-      - chromadb
-    volumes:
-      - .:/app
     environment:
       - CHROMA_HOST=chromadb
-    ports:
-      - "5000:5000"
-    command: bash -c "pip install -r requirements.txt && python src/kf_rag_wowinfo/run.py"
+
+  # rag_app:
+  #   build:
+  #     context: .
+  #   depends_on:
+  #     - chromadb
+  #   volumes:
+  #     - .:/app
+  #   environment:
+  #     - CHROMA_HOST=chromadb
+  #   ports:
+  #     - "5000:5000"
+  #   command: bash -c "pip install -r requirements.txt && python src/kf_rag_wowinfo/run.py"
 
 volumes:
   chromadb_data:
