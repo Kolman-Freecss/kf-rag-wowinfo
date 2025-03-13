@@ -19,6 +19,7 @@ services:
       - CHROMA_HOST=chromadb
     ports:
       - "5000:5000"
+    command: bash -c "pip install -r requirements.txt && python src/kf_rag_wowinfo/run.py"
 
 volumes:
   chromadb_data:

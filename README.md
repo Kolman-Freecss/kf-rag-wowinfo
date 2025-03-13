@@ -28,4 +28,10 @@ This application uses RAG architecture to:
 ## Usage
 
 1.  Run `docker-compose up --build` to start the ChromaDB and RAG application.
-2.  Run the `src/kf_rag_wowinfo/main.py` script.
+2.  Access the API endpoints:
+    *   `/query`:  Send a GET request to `http://localhost:8000/query?query=<your_question>` to ask a question about World of Warcraft.
+    *   `/load_data`: Send a POST request to `http://localhost:8000/load_data` to reload the data from the CSV file into the ChromaDB collection.
+
+## Docs
+
+- https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models?hl=es-419

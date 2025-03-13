@@ -12,3 +12,5 @@ unstructured>=0.10.0
 beautifulsoup4>=4.12.0
 tqdm>=4.65.0
 pyarrow>=14.0.0
+fastapi
+uvicorn

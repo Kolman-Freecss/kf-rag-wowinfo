@@ -17,21 +17,23 @@ def answer_question(collection, model, query):
     else:
         return "No information found for this question."
 
-def main():
-    # Load environment variables
-    load_dotenv()
-    gemini_api_key = os.environ.get("GEMINI_API_KEY")
-    chroma_host = os.environ.get("CHROMA_HOST", "localhost")
+# Load environment variables
+load_dotenv()
+gemini_api_key = os.environ.get("GEMINI_API_KEY")
+chroma_host = os.environ.get("CHROMA_HOST", "localhost")
 
-    # Configure Gemini
-    genai.configure(api_key=gemini_api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash-001')
+# Configure Gemini
+genai.configure(api_key=gemini_api_key)
+# gemini-2.0-pro-exp-02-05
+# gemini-2.0-flash-001
+model = genai.GenerativeModel('2.0-pro-exp-02-05')
 
-    # Configure ChromaDB
-    client = chromadb.HttpClient(host=chroma_host, port=8000)
-    embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
-    collection = client.get_or_create_collection("wowinfo", embedding_function=embedding_function)
+# Configure ChromaDB
+client = chromadb.HttpClient(host=chroma_host, port=8000)
+embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+collection = client.get_or_create_collection("wowinfo", embedding_function=embedding_function)
 
+def load_data():
     # Load data from CSV
     df = pd.read_csv("data/wow_data.csv")
     documents = df['description'].tolist()
@@ -44,23 +46,25 @@ def main():
         ids=ids
     )
 
-    # Questions
-    question1 = "What is the best class in World of Warcraft?"
-    question2 = "What is a melee fighter who uses stealth and poisons to deal damage?"
-    question3 = "Who is the class and spec that uses magic to heal and protect their allies? and tell me their class and spec"
+load_data()
+# def main():
+#     # Questions
+#     question1 = "What is the best class in World of Warcraft?"
+#     question2 = "What is a melee fighter who uses stealth and poisons to deal damage?"
+#     question3 = "Who is the class and spec that uses magic to heal and protect their allies? and tell me their class and spec"
 
-    # Answer questions
-    answer1 = answer_question(collection, model, question1)
-    answer2 = answer_question(collection, model, question2)
-    answer3 = answer_question(collection, model, question3)
+#     # Answer questions
+#     answer1 = answer_question(collection, model, question1)
+#     answer2 = answer_question(collection, model, question2)
+#     answer3 = answer_question(collection, model, question3)
 
-    # Print answers
-    print(f"Question 1: {question1}")
-    print(answer1)
-    print(f"Question 2: {question2}")
-    print(answer2)
-    print(f"Question 3: {question3}")
-    print(answer3)
+#     # Print answers
+#     print(f"Question 1: {question1}")
+#     print(answer1)
+#     print(f"Question 2: {question2}")
+#     print(answer2)
+#     print(f"Question 3: {question3}")
+#     print(answer3)
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
