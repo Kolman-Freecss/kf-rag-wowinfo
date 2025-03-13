@@ -1,0 +1,13 @@
+class,spec,description
+Warrior,Arms,"A melee fighter who uses heavy armor and weapons to deal damage."
+Mage,Fire,"A ranged spellcaster who uses fire magic to deal damage."
+Rogue,Assassination,"A melee fighter who uses stealth and poisons to deal damage."
+Priest,Holy,"A healer who uses holy magic to heal allies."
+Druid,Restoration,"A healer who uses nature magic to heal allies."
+Hunter,Marksmanship,"A ranged damage dealer who uses bows and guns."
+Shaman,Enhancement,"A melee damage dealer who uses totems and elemental magic."
+Warlock,Affliction,"A ranged damage dealer who uses curses and shadow magic."
+Monk,Windwalker,"A melee damage dealer who uses martial arts."
+Demon Hunter,Havoc,"A melee damage dealer who uses demonic powers."
+Death Knight,Frost,"A melee damage dealer who uses icy magic."
+Evoker,Devastation,"A ranged damage dealer who uses draconic magic."
